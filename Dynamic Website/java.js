@@ -20,17 +20,15 @@ async function getAverage() {
   grdbars.childNodes.forEach((element) => {
     gradesList.push(element.value);
   });
-  var request = new Request({
-    url: "localhost:3000/average",
-    method: "GET",
-    mode: "cors",
+  console.log(gradesList);
+  const response = await fetch("http://localhost:3000/average", {
+    method: "POST",
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
     },
-    body: { list: gradesList },
+    body: JSON.stringify({ list: gradesList }),
   });
 
-  const response = await fetch(request);
-  const average = await response;
-  console.log(average);
+  const data = await response.json();
+  console.log(data);
 }
