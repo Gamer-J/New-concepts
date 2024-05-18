@@ -13,14 +13,9 @@ app.post("/post", (req, res) => {
   console.log("Creating something");
 });
 app.post("/average", (req, res) => {
-  const gradesList = req.body.list; 
-  console.log(gradesList);
-  let sum = 0;
-  gradesList.forEach((element) => {
-    sum += parseInt(element);
-  });
-  const finalAverage = sum / gradesList.length;
-  res.send({ average: finalAverage });
+  const body = req.body; 
+  console.log(body);
+  res.send({ average: 100 });
 });
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
